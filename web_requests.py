@@ -12,6 +12,7 @@ headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleW
 removed_img_links = ['https://i.imgur.com/removed.png']
 
 
+@exception()
 def retry_request(link: str, stream: bool = False, times: int = 10):
     page_request = None
     for i in range(times):
@@ -45,7 +46,6 @@ def get_page_link(code: str):
     return WEBSITE_URL + code
 
 
-@exception()
 def make_request(link: str, stream=False):
     page = get(link, headers=headers, stream=stream)
     if page.status_code != 200:
