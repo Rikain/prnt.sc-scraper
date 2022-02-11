@@ -49,7 +49,7 @@ removed_img_links = ['https://i.imgur.com/removed.png']
 
 @exception()
 def retry_request(link: str, header: dict, stream: bool = False, times: int = 10):
-    page_request = None
+    page_request = -1
     for i in range(times):
         page_request = make_request(link, header, stream)
         if isinstance(page_request, int):
@@ -57,7 +57,7 @@ def retry_request(link: str, header: dict, stream: bool = False, times: int = 10
             continue
         break
     if isinstance(page_request, int):
-        raise ValueError(page_request)
+        raise ValueError(page_request, link)
     return page_request
 
 
