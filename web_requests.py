@@ -93,8 +93,14 @@ def get_soup(page: Response):
     return BeautifulSoup(page.content, 'html.parser')
 
 
+def fix_link(link: str):
+    if link[:5] != 'http:' and link[:6] != 'https:':
+        link = 'https:' + link
+    return link
+
+
 def get_image_link(soup: BeautifulSoup):
-    return soup.body.img.get('src')
+    return fix_link(soup.body.img.get('src'))
 
 
 def download_image(page: Response, path: str, filename: str):
