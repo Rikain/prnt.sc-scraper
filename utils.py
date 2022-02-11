@@ -34,7 +34,8 @@ def get_one_code_higher(code: str):
         for i in reversed(range(CODE_LENGTH)):
             if code[i] != ALLOWED_CHARACTERS[-1]:
                 try:
-                    add_one_code(code, i, len_of_last_char)
+                    new_code = add_one_code(code, i, len_of_last_char)
+                    return new_code
                 except (ValueError, IndexError):
                     return generate_new_code()
             else:
