@@ -99,7 +99,7 @@ def fix_link(link: str):
     return link
 
 
-def get_image_link(soup: BeautifulSoup):
+def get_image_link(soup: 'BeautifulSoup'):
     return fix_link(soup.body.img.get('src'))
 
 
