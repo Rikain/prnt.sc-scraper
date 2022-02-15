@@ -47,13 +47,18 @@ headers_img = {
 removed_img_links = ['https://i.imgur.com/removed.png']
 
 
+def wait_x_seconds_rand(x: int):
+    sleep(x + randint(0, 1000) / 1000)
+    return
+
+
 @exception()
 def retry_request(link: str, header: dict, stream: bool = False, times: int = 10):
     page_request = -1
     for i in range(times):
         page_request = make_request(link, header, stream)
         if isinstance(page_request, int):
-            sleep(2*i + randint(0, 1000) / 1000)
+            wait_x_seconds_rand(2*i)
             continue
         break
     if isinstance(page_request, int):
