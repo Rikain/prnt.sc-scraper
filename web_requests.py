@@ -1,4 +1,4 @@
-from requests import Response, get
+from requests import get
 from bs4 import BeautifulSoup
 from shutil import copyfileobj
 from time import sleep
@@ -89,7 +89,7 @@ def make_request(link: str, header: dict, stream=False):
         return page
 
 
-def get_soup(page: Response):
+def get_soup(page: 'Response'):
     return BeautifulSoup(page.content, 'html.parser')
 
 
@@ -103,7 +103,7 @@ def get_image_link(soup: BeautifulSoup):
     return fix_link(soup.body.img.get('src'))
 
 
-def download_image(page: Response, path: str, filename: str):
+def download_image(page: 'Response', path: str, filename: str):
     if page.url in removed_img_links:
         return
     check_and_create_dir(path)

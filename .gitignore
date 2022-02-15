@@ -132,3 +132,4 @@ dmypy.json
 pictures/
 .idea/
 saved_pictures/
+filter.py
